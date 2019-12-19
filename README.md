@@ -1,3 +1,7 @@
+# E-Commerce site
+
+This small project was created as an introduction to React. It consists of a small e-commerce site where we have to manage products and the shopping cart.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
