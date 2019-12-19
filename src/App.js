@@ -14,6 +14,12 @@ function App() {
         setProducts([...products, product]);
     }
 
+    const removeProduct = productIndex => {
+        const productsAux = [...products];
+        productsAux.splice(productIndex, 1);
+        setProducts(productsAux);
+    }
+
 	return (
 		<Router>
             <div>
@@ -24,7 +30,7 @@ function App() {
             </div>
 
             <main>
-                <Route exact path="/" render={() => <ProductList />} />
+                <Route exact path="/" render={() => <ProductList products={products} handleButtonClick={removeProduct} />} />
                 <Route path="/add-product" render={({history}) => <AddProduct handleSubmit={addProduct} history={history} />} />
                 <Route path="/product/:id">
                     <ProductDetail />
