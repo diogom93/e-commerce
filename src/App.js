@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 import AddProduct from './components/AddProduct';
@@ -8,6 +8,12 @@ import ProductList from './components/ProductList';
 import './App.css';
 
 function App() {
+    const [products, setProducts] = useState([]);
+
+    const addProduct = product => {
+        setProducts([...products, product]);
+    }
+
 	return (
 		<Router>
             <div>
@@ -18,9 +24,11 @@ function App() {
             </div>
 
             <main>
-                <Route exact path="/" component={ProductList} />
-                <Route path="/add-product" component={AddProduct} />
-                <Route path="/product/:id" component={ProductDetail} />
+                <Route exact path="/" render={() => <ProductList />} />
+                <Route path="/add-product" render={({history}) => <AddProduct handleSubmit={addProduct} history={history} />} />
+                <Route path="/product/:id">
+                    <ProductDetail />
+                </Route>
             </main>
         </Router>
 	);
