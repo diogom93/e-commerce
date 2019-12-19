@@ -30,11 +30,9 @@ function App() {
             </div>
 
             <main>
-                <Route exact path="/" render={() => <ProductList products={products} handleButtonClick={removeProduct} />} />
+                <Route exact path="/" render={({history}) => <ProductList products={products} handleButtonClick={removeProduct} history={history} />} />
                 <Route path="/add-product" render={({history}) => <AddProduct handleSubmit={addProduct} history={history} />} />
-                <Route path="/product/:id">
-                    <ProductDetail />
-                </Route>
+                <Route path="/product/:id" render={({match}) => <ProductDetail product={products.find(product => product.id === match.params.id)} />} />
             </main>
         </Router>
 	);
