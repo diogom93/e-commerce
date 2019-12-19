@@ -5,13 +5,11 @@ const AddProduct = props => {
     const [price, setPrice] = useState();
     const [image, setImage] = useState();
     const [description, setDescription] = useState();
-    const [currentId, setCurrentId] = useState('0');
 
     const handleSubmit = event => {
         event.preventDefault();
 
-        props.handleSubmit({name, price, description, image, id: currentId});
-        setCurrentId(currentId + 1);
+        props.handleSubmit({name, price, description, image});
         props.history.push('/');
     }
 

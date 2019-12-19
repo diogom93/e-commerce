@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductList = props => {
     const handleButtonClick = (event, index) => {
-        event.preventDefault();
+        event.stopPropagation();
 
         props.handleButtonClick(index);
     }
