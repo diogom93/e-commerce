@@ -39,14 +39,12 @@ function App() {
         }
 
         setCart(cartAux);
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     useEffect(() => {
-        const productsAux =JSON.parse(localStorage.getItem('products'));
-
-        if (productsAux) {
-            setProducts(productsAux);
-        }
+        setProducts(JSON.parse(localStorage.getItem('products')) || []);
+        setCart(JSON.parse(localStorage.getItem('cart')) || []);
     }, []);
 
 	return (
